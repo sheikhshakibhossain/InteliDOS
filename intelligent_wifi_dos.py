@@ -57,7 +57,7 @@ def start_attack_on_wifi():
 
     wifi_name = 'your_wifi_name'
     frequency = '2.4' # ex: 2.4 or 5.7
-    interface = 'wlxa09f10f030fd'
+    interface = 'your_wifi_adapter_interface' # ex: wlan0
     deauth_packets = 50
     
     while True:
