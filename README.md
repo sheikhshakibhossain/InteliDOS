@@ -6,9 +6,15 @@ It keeps track of BSSID of the Victim. So, If the Victim had changed it's Acess 
 it's no issue at all. <br>
 
 
+
 ## Install Requirements:
 ```bash
 sudo apt update
 sudo apt install aircrack-ng -y
 sudo apt install macchanger -y
 ```
+
+<br><br>
+## Author: Sheikh Shakib Hossain
+## Do not Copy the Code
+## It's not Open Source !!!
