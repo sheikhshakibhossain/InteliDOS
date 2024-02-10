@@ -55,8 +55,8 @@ def get_essid_bssid_channel(essid, freqency):
 
 def start_attack_on_wifi():
 
-    wifi_name = 'UIU-CAIR'
-    frequency = '2.4'
+    wifi_name = 'your_wifi_name'
+    frequency = '2.4' # ex: 2.4 or 5.7
     interface = 'wlxa09f10f030fd'
     deauth_packets = 50
     
