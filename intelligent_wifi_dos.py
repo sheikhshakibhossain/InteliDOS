@@ -1,3 +1,6 @@
+# Author: Sheikh Shakib Hossain
+# Do not Copy the Code. It's not Open Source
+
 import os
 import re
 import subprocess
