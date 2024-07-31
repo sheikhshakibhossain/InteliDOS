@@ -13,8 +13,3 @@ sudo apt update
 sudo apt install aircrack-ng -y
 sudo apt install macchanger -y
 ```
-
-<br><br>
-## Author: Sheikh Shakib Hossain
-## Do not Copy the Code
-## It's not Open Source !!!
